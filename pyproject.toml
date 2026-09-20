@@ -1,0 +1,38 @@
+[project]
+name = "comfyui-h3-chainloop"
+description = "Seamless-loop nodes for MiniMax H3. The H3 Chain Loop node chains N Ref2VA clips (with per-clip prompts and up to 9 identity references) into one video that loops perfectly back to its own start. Sidecar to ComfyUI-H3-Project-Suite, required at runtime for the arbitrary-index H3 keyframe patch."
+version = "0.2.0"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "GPL-3.0-or-later" }
+authors = [
+    { name = "SmeggyBoi" },
+]
+keywords = [
+    "comfyui",
+    "minimax-h3",
+    "video-generation",
+    "seamless-loop",
+    "video-continuation",
+    "chain-loop",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video",
+    "Operating System :: OS Independent",
+]
+# torch and node_helpers ship with ComfyUI itself. The hard dependency is
+# another custom node pack, not a PyPI package: ComfyUI-H3-Project-Suite must
+# be installed and loaded (it provides the marker-gated keyframe layout patch
+# these nodes activate at run time). It is declared in prose here because the
+# registry schema has no field for a cross-pack requirement.
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/SmeggyBoi/ComfyUI-H3-Chainloop"
+Homepage = "https://github.com/SmeggyBoi/ComfyUI-H3-Chainloop"
+
+[tool.comfy]
+DisplayName = "H3 Chain Loop"
+# Requires ComfyUI-H3-Project-Suite installed alongside this pack.
+requires-comfyui = ">=0.33.1"

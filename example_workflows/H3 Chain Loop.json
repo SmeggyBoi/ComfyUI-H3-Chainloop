@@ -1,0 +1,1790 @@
+{
+  "id": "c493bfc7-2a07-4168-9f07-33ceb852480d",
+  "revision": 0,
+  "last_node_id": 18,
+  "last_link_id": 21,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "CLIPLoader",
+      "pos": [
+        -1600,
+        520
+      ],
+      "size": [
+        420,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "title": "Text Encoder (nvfp4)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "CLIPLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "clip_name": true,
+            "type": true,
+            "device": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "type": "minimax",
+        "device": "default"
+      }
+    },
+    {
+      "id": 6,
+      "type": "VAELoader",
+      "pos": [
+        -1600,
+        670
+      ],
+      "size": [
+        420,
+        70
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "title": "Video VAE",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "VAELoader",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "vae_name": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_int8_convrot.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+      }
+    },
+    {
+      "id": 7,
+      "type": "LoadImage",
+      "pos": [
+        -1600,
+        780
+      ],
+      "size": [
+        420,
+        400
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "choose file to upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            7
+          ]
+        },
+        {
+          "localized_name": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "title": "Reference Image (identity)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "LoadImage",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "image": true,
+            "upload": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "example_reference.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "example_reference.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 8,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -1100,
+        1250
+      ],
+      "size": [
+        570,
+        320
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "title": "PROMPTS — one section per clip, split on a line of ===; 1 section = same for all",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "value": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "subject_definitions:\n<Subject 1> is the woman from the reference image, retaining her exact face, hair, body, and clothing; the reference supplies her identity only, not the setting.\n\nsummary:\n[reference generation] The target video shows <Subject 1> beginning already mid-groove in a warm, softly-lit modern living room, swaying her hips through a bouncy step-touch dance that gradually winds into a turn by the end of the clip, framed and lit identically throughout with a locked static camera.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, body, and clothing from the reference image are kept exactly; only her location changes to the new living-room setting.\n\ndetailed_description:\nThe target video is photoreal with a warm, stylish, upbeat mood, lit by soft, even, constant indoor lighting, shot with a locked static camera in a vertical 9:16 phone frame.\n[Shot 1] A full-body vertical shot holds on <Subject 1>, the woman from the reference image with her exact face, hair, body, and clothing, dancing in the center of a warm, softly-lit modern living room with a low sofa, a rug, and a couple of fixed warm lamps behind her. She is ALREADY MID-DANCE on the very first frame: her weight already shifted onto one foot, hips already turned to one side, one shoulder already dropped, and her arms already mid-swing - a dynamic, in-motion pose, NOT a neutral standing rest. From that exact pose she performs a bouncy, energetic step-touch groove: stepping out to one side and tapping the other foot in, then back the other way, rolling and swinging her hips with each step, bouncing lightly on the beat with soft knee bounce, shoulders rocking and arms swinging with real energy at a moderate, upbeat tempo. There is no pause, no settle, and no still moment anywhere in the clip - she keeps moving continuously from the first frame to the last. Over the course of the clip the step-touch groove gradually opens up: her hips keep rolling but her upper body begins to rotate further with each step, her weight carrying her smoothly around so that by the final frame she is already turning her body away from camera, torso rotating, arms sweeping outward into the start of a spin, with no stop or reset at the transition - the turn simply grows out of the groove. She does not walk away, travel across the room, or change expression. The background, framing, and lighting stay identical throughout - same setting, no new background, no scene change, no color-temperature shift, no flicker, no brightness ramp, identical exposure at the start, middle, and end. The camera stays locked and static, with no push-in, pan, tilt, or orbit, holding the full-body vertical composition so her hips, legs, and arms remain visible for the whole clip.\n\noverall_soundscape:\nQuiet indoor room tone only, unchanging throughout. No music.\n\nnon_diegetic_music:\nN/A\n"
+      ],
+      "widgets_values_named": {
+        "value": "subject_definitions:\n<Subject 1> is the woman from the reference image, retaining her exact face, hair, body, and clothing; the reference supplies her identity only, not the setting.\n\nsummary:\n[reference generation] The target video shows <Subject 1> beginning already mid-groove in a warm, softly-lit modern living room, swaying her hips through a bouncy step-touch dance that gradually winds into a turn by the end of the clip, framed and lit identically throughout with a locked static camera.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, body, and clothing from the reference image are kept exactly; only her location changes to the new living-room setting.\n\ndetailed_description:\nThe target video is photoreal with a warm, stylish, upbeat mood, lit by soft, even, constant indoor lighting, shot with a locked static camera in a vertical 9:16 phone frame.\n[Shot 1] A full-body vertical shot holds on <Subject 1>, the woman from the reference image with her exact face, hair, body, and clothing, dancing in the center of a warm, softly-lit modern living room with a low sofa, a rug, and a couple of fixed warm lamps behind her. She is ALREADY MID-DANCE on the very first frame: her weight already shifted onto one foot, hips already turned to one side, one shoulder already dropped, and her arms already mid-swing - a dynamic, in-motion pose, NOT a neutral standing rest. From that exact pose she performs a bouncy, energetic step-touch groove: stepping out to one side and tapping the other foot in, then back the other way, rolling and swinging her hips with each step, bouncing lightly on the beat with soft knee bounce, shoulders rocking and arms swinging with real energy at a moderate, upbeat tempo. There is no pause, no settle, and no still moment anywhere in the clip - she keeps moving continuously from the first frame to the last. Over the course of the clip the step-touch groove gradually opens up: her hips keep rolling but her upper body begins to rotate further with each step, her weight carrying her smoothly around so that by the final frame she is already turning her body away from camera, torso rotating, arms sweeping outward into the start of a spin, with no stop or reset at the transition - the turn simply grows out of the groove. She does not walk away, travel across the room, or change expression. The background, framing, and lighting stay identical throughout - same setting, no new background, no scene change, no color-temperature shift, no flicker, no brightness ramp, identical exposure at the start, middle, and end. The camera stays locked and static, with no push-in, pan, tilt, or orbit, holding the full-body vertical composition so her hips, legs, and arms remain visible for the whole clip.\n\noverall_soundscape:\nQuiet indoor room tone only, unchanging throughout. No music.\n\nnon_diegetic_music:\nN/A\n"
+      }
+    },
+    {
+      "id": 3,
+      "type": "MiniMaxH3ChunkFeedForward",
+      "pos": [
+        -1610,
+        350
+      ],
+      "size": [
+        420,
+        110
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 2
+        },
+        {
+          "localized_name": "enabled",
+          "name": "enabled",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "enabled"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "chunks",
+          "name": "chunks",
+          "type": "INT",
+          "widget": {
+            "name": "chunks"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "min_tokens",
+          "name": "min_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "min_tokens"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "title": "Chunk FeedForward (VRAM saver, lossless-ish)",
+      "properties": {
+        "aux_id": "Saganaki22/ComfyUI-sol-attn",
+        "ver": "latest",
+        "Node name for S&R": "MiniMaxH3ChunkFeedForward",
+        "cnr_id": "comfyui-sol-attn",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "enabled": true,
+            "chunks": true,
+            "min_tokens": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        true,
+        4,
+        4096
+      ],
+      "widgets_values_named": {
+        "enabled": true,
+        "chunks": 4,
+        "min_tokens": 4096
+      }
+    },
+    {
+      "id": 2,
+      "type": "ModelAttentionBackend",
+      "pos": [
+        -1610,
+        200
+      ],
+      "size": [
+        420,
+        80
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 16
+        },
+        {
+          "localized_name": "attention",
+          "name": "attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "title": "Attention Backend (comfy kitchen)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "ModelAttentionBackend",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "attention": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "comfy kitchen attention"
+      ],
+      "widgets_values_named": {
+        "attention": "comfy kitchen attention"
+      }
+    },
+    {
+      "id": 4,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -1610,
+        30
+      ],
+      "size": [
+        420,
+        120
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 19
+        },
+        {
+          "localized_name": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "title": "Acc-8Step LoRA (Always On, fidelity standard)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "lora_name": true,
+            "strength_model": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "MINIMAXH3/MiniMax-H3-Ref2VA-Acc-8Step.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "MINIMAXH3/MiniMax-H3-Ref2VA-Acc-8Step.safetensors",
+        "strength_model": 1
+      }
+    },
+    {
+      "id": 16,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        -2000,
+        30
+      ],
+      "size": [
+        350,
+        410
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "model",
+          "type": "MODEL",
+          "link": 18
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "MODEL",
+          "shape": 3,
+          "type": "MODEL",
+          "links": [
+            19
+          ]
+        },
+        {
+          "dir": 4,
+          "name": "CLIP",
+          "shape": 3,
+          "type": "CLIP",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "ver": "1.0.2512112053",
+        "Show Strengths": "Single Strength",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        }
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/MysticXXX_MMH3-V4-ref2va.safetensors",
+          "strength": 0.20000000000000018,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/HMNSFW-AIO-V2.5.safetensors",
+          "strength": 0.5,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/MM-H3 - Blowjob v3.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/MinimaxH3-Blowjob-512_000000510.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/cum_facial_000005400.safetensors",
+          "strength": 0.8999999999999999,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/CUMOUF_oral_creampie_H3_v1.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/TADA H3 - ORAL SWALLOW.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/Minimaxh3-Licking_Balls_and_Penis-Ref2V-512_000000552.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/Vagina_minimax-h3_epoch20.safetensors",
+          "strength": 0.9000000000000002,
+          "strengthTwo": null
+        },
+        {
+          "on": true,
+          "lora": "MINIMAXH3/breastplayjiggle_h3_v2.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/better_motion_h3_lora_v1_500.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "MINIMAXH3/ig_tiktok_aesthetic_h3_lora_v1_500.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {},
+        ""
+      ],
+      "widgets_values_named": {
+        "divider": {},
+        "PowerLoraLoaderHeaderWidget": {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        "lora_1": {
+          "on": false,
+          "lora": "MINIMAXH3/MysticXXX_MMH3-V4-ref2va.safetensors",
+          "strength": 0.20000000000000018,
+          "strengthTwo": null
+        },
+        "lora_2": {
+          "on": false,
+          "lora": "MINIMAXH3/HMNSFW-AIO-V2.5.safetensors",
+          "strength": 0.5,
+          "strengthTwo": null
+        },
+        "lora_3": {
+          "on": false,
+          "lora": "MINIMAXH3/MM-H3 - Blowjob v3.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        "lora_4": {
+          "on": false,
+          "lora": "MINIMAXH3/MinimaxH3-Blowjob-512_000000510.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        "lora_5": {
+          "on": false,
+          "lora": "MINIMAXH3/cum_facial_000005400.safetensors",
+          "strength": 0.8999999999999999,
+          "strengthTwo": null
+        },
+        "lora_6": {
+          "on": false,
+          "lora": "MINIMAXH3/CUMOUF_oral_creampie_H3_v1.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        "lora_7": {
+          "on": false,
+          "lora": "MINIMAXH3/TADA H3 - ORAL SWALLOW.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        "lora_8": {
+          "on": false,
+          "lora": "MINIMAXH3/Minimaxh3-Licking_Balls_and_Penis-Ref2V-512_000000552.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        "lora_9": {
+          "on": false,
+          "lora": "MINIMAXH3/Vagina_minimax-h3_epoch20.safetensors",
+          "strength": 0.9000000000000002,
+          "strengthTwo": null
+        },
+        "lora_10": {
+          "on": true,
+          "lora": "MINIMAXH3/breastplayjiggle_h3_v2.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        "lora_11": {
+          "on": false,
+          "lora": "MINIMAXH3/better_motion_h3_lora_v1_500.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        "lora_12": {
+          "on": false,
+          "lora": "MINIMAXH3/ig_tiktok_aesthetic_h3_lora_v1_500.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        "➕ Add Lora": ""
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 15,
+      "type": "MarkdownNote",
+      "pos": [
+        -2120,
+        -810
+      ],
+      "size": [
+        900,
+        560
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Usage — H3 Chain Loop",
+      "properties": {
+        "Node name for S&R": "MarkdownNote",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "## H3 Chain Loop — usage\n\n**num_clips** (int, on the H3 Chain Loop node): how many Ref2VA clips to chain into one seamless loop.\n\n**Duration → Frames**: set the `Float (duration, seconds)` node to the desired clip length in *seconds* (e.g. 8.0). It feeds `Duration → Frames` (`round(a * 24)`, fps=24) → `length` on H3 Chain Loop. The node clamps `length` to 5–3600 and MiniMaxH3ReferenceToVideo snaps it up internally to the next valid H3 grid length — any seconds value ≥ ~0.21s is safe.\n\n**Resolution**: set the `Megapixel` float (e.g. 0.50) → `Resolution Selector.megapixels`. `Resolution Selector.multiple` is fixed at 32 (16 VAE downscale × 2 DiT patch) so width/height are always ÷32-safe. Aspect is 9:16 (Portrait Widescreen) by default → 768×1344; switch the dropdown to 16:9 (Widescreen) for 1344×768 landscape, etc. Its `width`/`height` outputs feed the H3 Chain Loop `width`/`height` inputs.\n\n**Prompts box**: one section = the same prompt is used for every clip. To vary the action per clip, split into N sections with a line containing only `===` — the count must then match `num_clips` exactly (one action per clip).\n\n**Loop math**: each clip is `length` frames; consecutive clips overlap by `overlap` frames (context-length combo: 1/5/22/39/56), so the net contribution per additional clip is `length − overlap`. `seed_tail` locks the tail seed for a clean stitch; `head_hold`/`tail_hold` control how strongly the first/last held frames resist redenoising.\n\nModel chain (fixed, the H3 render standard): UNETLoader (Ref2VA int8_convrot) → ModelAttentionBackend (comfy kitchen attention) → MiniMaxH3ChunkFeedForward (True, 4, 4096 — lossless VRAM relief) → LoraLoaderModelOnly (Acc-8Step, strength 1.0, always on) → H3 Chain Loop.model. 8 sampling steps, er_sde / beta. No SLA / Sol / Spectrum speed-ups."
+      ],
+      "widgets_values_named": {
+        "text": "## H3 Chain Loop — usage\n\n**num_clips** (int, on the H3 Chain Loop node): how many Ref2VA clips to chain into one seamless loop.\n\n**Duration → Frames**: set the `Float (duration, seconds)` node to the desired clip length in *seconds* (e.g. 8.0). It feeds `Duration → Frames` (`round(a * 24)`, fps=24) → `length` on H3 Chain Loop. The node clamps `length` to 5–3600 and MiniMaxH3ReferenceToVideo snaps it up internally to the next valid H3 grid length — any seconds value ≥ ~0.21s is safe.\n\n**Resolution**: set the `Megapixel` float (e.g. 0.50) → `Resolution Selector.megapixels`. `Resolution Selector.multiple` is fixed at 32 (16 VAE downscale × 2 DiT patch) so width/height are always ÷32-safe. Aspect is 9:16 (Portrait Widescreen) by default → 768×1344; switch the dropdown to 16:9 (Widescreen) for 1344×768 landscape, etc. Its `width`/`height` outputs feed the H3 Chain Loop `width`/`height` inputs.\n\n**Prompts box**: one section = the same prompt is used for every clip. To vary the action per clip, split into N sections with a line containing only `===` — the count must then match `num_clips` exactly (one action per clip).\n\n**Loop math**: each clip is `length` frames; consecutive clips overlap by `overlap` frames (context-length combo: 1/5/22/39/56), so the net contribution per additional clip is `length − overlap`. `seed_tail` locks the tail seed for a clean stitch; `head_hold`/`tail_hold` control how strongly the first/last held frames resist redenoising.\n\nModel chain (fixed, the H3 render standard): UNETLoader (Ref2VA int8_convrot) → ModelAttentionBackend (comfy kitchen attention) → MiniMaxH3ChunkFeedForward (True, 4, 4096 — lossless VRAM relief) → LoraLoaderModelOnly (Acc-8Step, strength 1.0, always on) → H3 Chain Loop.model. 8 sampling steps, er_sde / beta. No SLA / Sol / Spectrum speed-ups."
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        -1610,
+        -130
+      ],
+      "size": [
+        420,
+        90
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "title": "H3 UNet (Ref2VA)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "unet_name": true,
+            "weight_dtype": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "MiniMax_H3_Ref2VA_pruned_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "MiniMax_H3_Ref2VA_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 13,
+      "type": "H3ChainLoop",
+      "pos": [
+        -1100,
+        210
+      ],
+      "size": [
+        460,
+        620
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 17
+        },
+        {
+          "localized_name": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 5
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 6
+        },
+        {
+          "localized_name": "ref_image",
+          "name": "ref_image",
+          "type": "IMAGE",
+          "link": 7
+        },
+        {
+          "localized_name": "prompts",
+          "name": "prompts",
+          "type": "STRING",
+          "widget": {
+            "name": "prompts"
+          },
+          "link": 8
+        },
+        {
+          "localized_name": "num_clips",
+          "name": "num_clips",
+          "type": "INT",
+          "widget": {
+            "name": "num_clips"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "length",
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": 10
+        },
+        {
+          "localized_name": "overlap",
+          "name": "overlap",
+          "type": "COMBO",
+          "widget": {
+            "name": "overlap"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 12
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 13
+        },
+        {
+          "localized_name": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "seed_tail",
+          "name": "seed_tail",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "seed_tail"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "head_hold",
+          "name": "head_hold",
+          "type": "FLOAT",
+          "widget": {
+            "name": "head_hold"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "tail_hold",
+          "name": "tail_hold",
+          "type": "FLOAT",
+          "widget": {
+            "name": "tail_hold"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3ChainLoop",
+        "cnr_id": null,
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "prompts": true,
+            "num_clips": true,
+            "length": true,
+            "overlap": true,
+            "width": true,
+            "height": true,
+            "steps": true,
+            "sampler_name": true,
+            "scheduler": true,
+            "denoise": true,
+            "seed": true,
+            "seed_tail": true,
+            "head_hold": true,
+            "tail_hold": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "subject_definitions:\n<Subject 1> is the woman from the reference image, retaining her exact face, hair, body, and clothing; the reference supplies her identity only, not the setting.\n\nsummary:\n[reference generation] The target video shows <Subject 1> performing a single continuous, lively, cyclical little dance in one fixed spot inside a warm, softly-lit modern living room, framed and lit identically from the first frame to the last so the clip loops seamlessly with no visible seam or pause.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, body, and clothing from the reference image are kept exactly; only her location changes to the new living-room setting.\n\ndetailed_description:\nThe target video is photoreal with a warm, stylish, upbeat mood, lit by soft, even, constant indoor lighting, shot with a locked static camera in a vertical 9:16 phone frame.\n[Shot 1] A full-body vertical shot holds on <Subject 1>, the woman from the reference image with her exact face, hair, body, and clothing, dancing in the center of a warm, softly-lit modern living room with a low sofa, a rug, and a couple of fixed warm lamps behind her. Crucially, she is ALREADY MID-DANCE on the very first frame: caught in the middle of the groove, her weight already shifted onto one foot, hips already turned to one side, one shoulder already dropped, and her arms already mid-swing. This first frame is a dynamic, in-motion pose, NOT a neutral centered standing rest, NOT a still or settled stance. From that mid-motion start she performs one single continuous, cyclical, energetic groove: a bouncy step-touch, stepping out to one side and tapping the other foot in, then back the other way, rolling and swinging her hips with each step, bouncing lightly on the beat with soft knee bounce, shoulders rocking and arms swinging with real energy at a moderate, upbeat tempo. The motion is lively and rhythmic and flows without a single pause: there is NO settle, NO stop, NO still moment, and NO neutral rest pose at the start, in the middle, or at the end - she never comes to rest and keeps grooving continuously the entire time. The full multi-beat dance phrase is timed to complete and return to the EXACT same mid-motion pose it began with: the same shifted weight, the same turned hips, the same mid-swing arm positions, the same shoulder drop, the same body position on the floor, and the same movement speed and direction, so the final frame matches the first frame precisely and the loop point is invisible - the dance simply continues through the seam. She does not walk away, travel across the room, change her step pattern, look away, or change expression. The background, the framing, and the lighting stay identical throughout - same setting, no new background, no scene change, no color-temperature shift, no flicker, no brightness ramp, identical exposure at the start, middle, and end. The camera stays locked and static, with no push-in, pan, tilt, or orbit, holding the full-body vertical composition so her hips, legs, and arms remain visible for the whole dance.\n\noverall_soundscape:\nQuiet indoor room tone only, unchanging throughout. No music.\n\nnon_diegetic_music:\nN/A\n\n=== (add another section like this, separated by a line containing only three equals signs, for a different action per clip; delete this line and everything below it to use ONE prompt for every clip)",
+        1,
+        124,
+        22,
+        768,
+        1344,
+        10,
+        "er_sde",
+        "beta",
+        1,
+        1377839773,
+        "randomize",
+        true,
+        1,
+        1
+      ],
+      "widgets_values_named": {
+        "prompts": "subject_definitions:\n<Subject 1> is the woman from the reference image, retaining her exact face, hair, body, and clothing; the reference supplies her identity only, not the setting.\n\nsummary:\n[reference generation] The target video shows <Subject 1> performing a single continuous, lively, cyclical little dance in one fixed spot inside a warm, softly-lit modern living room, framed and lit identically from the first frame to the last so the clip loops seamlessly with no visible seam or pause.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, body, and clothing from the reference image are kept exactly; only her location changes to the new living-room setting.\n\ndetailed_description:\nThe target video is photoreal with a warm, stylish, upbeat mood, lit by soft, even, constant indoor lighting, shot with a locked static camera in a vertical 9:16 phone frame.\n[Shot 1] A full-body vertical shot holds on <Subject 1>, the woman from the reference image with her exact face, hair, body, and clothing, dancing in the center of a warm, softly-lit modern living room with a low sofa, a rug, and a couple of fixed warm lamps behind her. Crucially, she is ALREADY MID-DANCE on the very first frame: caught in the middle of the groove, her weight already shifted onto one foot, hips already turned to one side, one shoulder already dropped, and her arms already mid-swing. This first frame is a dynamic, in-motion pose, NOT a neutral centered standing rest, NOT a still or settled stance. From that mid-motion start she performs one single continuous, cyclical, energetic groove: a bouncy step-touch, stepping out to one side and tapping the other foot in, then back the other way, rolling and swinging her hips with each step, bouncing lightly on the beat with soft knee bounce, shoulders rocking and arms swinging with real energy at a moderate, upbeat tempo. The motion is lively and rhythmic and flows without a single pause: there is NO settle, NO stop, NO still moment, and NO neutral rest pose at the start, in the middle, or at the end - she never comes to rest and keeps grooving continuously the entire time. The full multi-beat dance phrase is timed to complete and return to the EXACT same mid-motion pose it began with: the same shifted weight, the same turned hips, the same mid-swing arm positions, the same shoulder drop, the same body position on the floor, and the same movement speed and direction, so the final frame matches the first frame precisely and the loop point is invisible - the dance simply continues through the seam. She does not walk away, travel across the room, change her step pattern, look away, or change expression. The background, the framing, and the lighting stay identical throughout - same setting, no new background, no scene change, no color-temperature shift, no flicker, no brightness ramp, identical exposure at the start, middle, and end. The camera stays locked and static, with no push-in, pan, tilt, or orbit, holding the full-body vertical composition so her hips, legs, and arms remain visible for the whole dance.\n\noverall_soundscape:\nQuiet indoor room tone only, unchanging throughout. No music.\n\nnon_diegetic_music:\nN/A\n\n=== (add another section like this, separated by a line containing only three equals signs, for a different action per clip; delete this line and everything below it to use ONE prompt for every clip)",
+        "num_clips": 1,
+        "length": 124,
+        "overlap": 22,
+        "width": 768,
+        "height": 1344,
+        "steps": 10,
+        "sampler_name": "er_sde",
+        "scheduler": "beta",
+        "denoise": 1,
+        "seed": 1377839773,
+        "control_after_generate": "randomize",
+        "seed_tail": true,
+        "head_hold": 1,
+        "tail_hold": 1
+      }
+    },
+    {
+      "id": 17,
+      "type": "RIFEInterpolation",
+      "pos": [
+        -590,
+        210
+      ],
+      "size": [
+        450,
+        180
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 20
+        },
+        {
+          "localized_name": "source_fps",
+          "name": "source_fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "source_fps"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "target_fps",
+          "name": "target_fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "target_fps"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "scale",
+          "name": "scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "scale"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "model_name",
+          "name": "model_name",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "model_name"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "batch_size",
+          "name": "batch_size",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "use_fp16",
+          "name": "use_fp16",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "use_fp16"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "GACLove/ComfyUI-VFI",
+        "ver": "6176a430f12cd16003f4664c1e3c6af8e96cc3c6",
+        "Node name for S&R": "RIFEInterpolation",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        24,
+        60,
+        1,
+        "flownet.pkl",
+        8,
+        true
+      ],
+      "widgets_values_named": {
+        "source_fps": 24,
+        "target_fps": 60,
+        "scale": 1,
+        "model_name": "flownet.pkl",
+        "batch_size": 8,
+        "use_fp16": true
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 10,
+      "type": "ComfyMathExpression",
+      "pos": [
+        -760,
+        -120
+      ],
+      "size": [
+        360,
+        130
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "localized_name": "a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 9
+        },
+        {
+          "localized_name": "b",
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        },
+        {
+          "localized_name": "expression",
+          "name": "expression",
+          "type": "STRING",
+          "widget": {
+            "name": "expression"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "FLOAT",
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "localized_name": "INT",
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            10
+          ]
+        },
+        {
+          "localized_name": "BOOL",
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "title": "Duration → Frames (fps 24)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "ComfyMathExpression",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "expression": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "round(a * 24)"
+      ],
+      "widgets_values_named": {
+        "expression": "round(a * 24)"
+      }
+    },
+    {
+      "id": 9,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -1100,
+        -180
+      ],
+      "size": [
+        270,
+        70
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "type": "FLOAT",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "FLOAT",
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "title": "Float (duration, seconds)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "PrimitiveFloat",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "value": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        8
+      ],
+      "widgets_values_named": {
+        "value": 8
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 11,
+      "type": "Float",
+      "pos": [
+        -1100,
+        -60
+      ],
+      "size": [
+        270,
+        60
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "type": "FLOAT",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "FLOAT",
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "title": "Megapixel",
+      "properties": {
+        "cnr_id": "comfyui-logic",
+        "ver": "1.0.0",
+        "Node name for S&R": "Float",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "value": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        0.5
+      ],
+      "widgets_values_named": {
+        "value": 0.5
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 12,
+      "type": "ResolutionSelector",
+      "pos": [
+        -770,
+        -60
+      ],
+      "size": [
+        280,
+        130
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "preview",
+          "name": "preview",
+          "shape": 7,
+          "type": "RESOLUTION_PREVIEW",
+          "link": null
+        },
+        {
+          "localized_name": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "megapixels",
+          "name": "megapixels",
+          "type": "FLOAT",
+          "widget": {
+            "name": "megapixels"
+          },
+          "link": 11
+        },
+        {
+          "localized_name": "multiple",
+          "name": "multiple",
+          "type": "INT",
+          "widget": {
+            "name": "multiple"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "links": [
+            12
+          ]
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "links": [
+            13
+          ]
+        }
+      ],
+      "title": "Resolution Selector (9:16, ÷32)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.0",
+        "Node name for S&R": "ResolutionSelector",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "aspect_ratio": true,
+            "megapixels": true,
+            "multiple": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "9:16 (Portrait Widescreen)",
+        0.5,
+        32
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "9:16 (Portrait Widescreen)",
+        "megapixels": 0.5,
+        "multiple": 32
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 14,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        -80,
+        210
+      ],
+      "size": [
+        520,
+        340
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 21
+        },
+        {
+          "localized_name": "audio",
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "localized_name": "meta_batch",
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "localized_name": "vae",
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "localized_name": "frame_rate",
+          "name": "frame_rate",
+          "type": "FLOAT",
+          "widget": {
+            "name": "frame_rate"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "loop_count",
+          "name": "loop_count",
+          "type": "INT",
+          "widget": {
+            "name": "loop_count"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "format",
+          "name": "format",
+          "type": "COMBO",
+          "widget": {
+            "name": "format"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "pingpong",
+          "name": "pingpong",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "pingpong"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "save_output",
+          "name": "save_output",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "save_output"
+          },
+          "link": null
+        },
+        {
+          "name": "pix_fmt",
+          "type": [
+            "yuv420p",
+            "yuv420p10le"
+          ],
+          "widget": {
+            "name": "pix_fmt"
+          },
+          "link": null
+        },
+        {
+          "name": "crf",
+          "type": "INT",
+          "widget": {
+            "name": "crf"
+          },
+          "link": null
+        },
+        {
+          "name": "save_metadata",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "save_metadata"
+          },
+          "link": null
+        },
+        {
+          "name": "trim_to_audio",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "trim_to_audio"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "Filenames",
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": []
+        }
+      ],
+      "title": "Combine to Video (loop)",
+      "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "1.7.9",
+        "Node name for S&R": "VHS_VideoCombine",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "frame_rate": true,
+            "loop_count": true,
+            "filename_prefix": true,
+            "format": true,
+            "pingpong": true,
+            "save_output": true,
+            "pix_fmt": true,
+            "crf": true,
+            "save_metadata": true,
+            "trim_to_audio": true
+          },
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": {
+        "frame_rate": 60,
+        "loop_count": 0,
+        "filename_prefix": "H3_ChainLoop/loop",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": ""
+      },
+      "widgets_values_named": {
+        "frame_rate": 60,
+        "loop_count": 0,
+        "filename_prefix": "H3_ChainLoop/loop",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": ""
+      }
+    }
+  ],
+  "links": [
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      5,
+      5,
+      0,
+      13,
+      1,
+      "CLIP"
+    ],
+    [
+      6,
+      6,
+      0,
+      13,
+      2,
+      "VAE"
+    ],
+    [
+      7,
+      7,
+      0,
+      13,
+      3,
+      "IMAGE"
+    ],
+    [
+      8,
+      8,
+      0,
+      13,
+      4,
+      "STRING"
+    ],
+    [
+      9,
+      9,
+      0,
+      10,
+      0,
+      "FLOAT"
+    ],
+    [
+      10,
+      10,
+      1,
+      13,
+      6,
+      "INT"
+    ],
+    [
+      11,
+      11,
+      0,
+      12,
+      2,
+      "FLOAT"
+    ],
+    [
+      12,
+      12,
+      0,
+      13,
+      8,
+      "INT"
+    ],
+    [
+      13,
+      12,
+      1,
+      13,
+      9,
+      "INT"
+    ],
+    [
+      16,
+      4,
+      0,
+      2,
+      0,
+      "MODEL"
+    ],
+    [
+      17,
+      3,
+      0,
+      13,
+      0,
+      "MODEL"
+    ],
+    [
+      18,
+      1,
+      0,
+      16,
+      0,
+      "MODEL"
+    ],
+    [
+      19,
+      16,
+      0,
+      4,
+      0,
+      "MODEL"
+    ],
+    [
+      20,
+      13,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      21,
+      17,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.45,
+      "offset": [
+        2664.4444444444443,
+        946.6666666666667
+      ]
+    },
+    "ue_links": []
+  },
+  "version": 0.4
+}
